@@ -1,0 +1,9 @@
+<template name="TextBlockList">
+  <div class="card text-block-list">
+    <h2 class="card-title">{{i18n 'textBlocks.list'}}</h2>
+    
+    <div class="data-table">
+      {{> reactiveTable settings=Tables.TextBlocks}}
+    </div>
+  </div>
+</template>

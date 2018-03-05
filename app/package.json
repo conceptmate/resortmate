@@ -1,0 +1,26 @@
+{
+  "name": "resortmate",
+  "version": "0.7.0",
+  "description": "Resort Mate is a management tool for small-scale to mid-scale pensions and hotels",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://raedle@bitbucket.org/raedle/resort-mate.git"
+  },
+  "keywords": [
+    "resortmate",
+    "pension",
+    "hotel",
+    "management"
+  ],
+  "author": "Roman Raedle",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/raedle/resort-mate#readme",
+  "dependencies": {
+    "jquery": "^3.0.0",
+    "moment": "^2.13.0"
+  }
+}

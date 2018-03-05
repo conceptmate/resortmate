@@ -1,0 +1,22 @@
+<template name="PageEdit">
+  <div class="pages input-form items-document items-document-edit page-edit">
+    
+    <h1>First Page</h1>
+    
+    {{#Page pageSize="A4" pageNumber="1" pageInfo="Seite 1 von 1" isEditable=true}}
+      First Page
+    {{/Page}}
+    
+    <h1>Middle Pages</h1>
+    
+    {{#Page pageSize="A4" pageNumber="2" pageInfo="Seite 1 von 2"}}
+      Middle Page
+    {{/Page}}
+    
+    <h1>Last Page</h1>
+    
+    {{#Page pageSize="A4" pageNumber="3" pageInfo="Seite 1 von 3"}}
+      Last Page
+    {{/Page}}
+  </div>
+</template>

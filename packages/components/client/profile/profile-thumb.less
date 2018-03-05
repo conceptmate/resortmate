@@ -1,0 +1,10 @@
+// Styles for non-native browsers
+.componentMixin(~'>div');
+// Styles for browsers with ShadowRoot native
+.componentMixin(~'::shadow');
+
+.componentMixin(@suffix) {
+  profile-thumb@{suffix} {
+           
+  }
+}

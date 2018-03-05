@@ -1,0 +1,14 @@
+<template name="BrowseFile">
+  <div class="input-group">
+    <span class="input-group-btn">
+      <span class="btn btn-primary btn-file"> {{{i18n 'browse'}}}
+        {{#if multiple}}
+          <input id="{{id}}" type="file" multiple>
+        {{else}}
+          <input id="{{id}}" type="file">
+        {{/if}}
+      </span>
+    </span>
+    <input type="text" class="form-control" readonly>
+  </div>
+</template>

@@ -1,0 +1,42 @@
+@import '/client/styles/print/page/page-sizes.import.less';
+
+.page[page-size="infinite"] {
+  width: @page-infinite-width;
+  height: @page-infinite-height;
+  
+  // display page information, e.g., Page 1 of 3
+  &:before {
+    bottom: @page-infinite-margin-bottom + @page-infinite-footer-height;
+  }
+  
+  header {
+    width: @page-infinite-width - @page-infinite-margin-left - @page-infinite-margin-right;
+    height: @page-infinite-header-height;
+    
+    margin-top: @page-infinite-margin-top;
+    margin-left: @page-infinite-margin-left;
+    margin-right: @page-infinite-margin-right;
+  }
+  
+  footer {
+    width: @page-infinite-width - @page-infinite-margin-left - @page-infinite-margin-right;
+    height: @page-infinite-footer-height;
+    
+    margin-bottom: @page-infinite-margin-bottom;
+    margin-left: @page-infinite-margin-left;
+    margin-right: @page-infinite-margin-right;
+    
+    .footer-item {
+      top: @page-infinite-footer-height / 2;
+    }
+  }
+  
+  .page-content {
+    width: @page-infinite-width - @page-infinite-margin-left - @page-infinite-margin-right;
+    height: @page-infinite-height - @page-infinite-margin-top - @page-infinite-margin-bottom - @page-infinite-header-height - @page-infinite-footer-height;
+    margin-top: @page-infinite-margin-top + @page-infinite-header-height;
+    margin-right: @page-infinite-margin-right;
+    margin-bottom: @page-infinite-margin-bottom + @page-infinite-footer-height;
+    margin-left: @page-infinite-margin-left;
+  }
+}

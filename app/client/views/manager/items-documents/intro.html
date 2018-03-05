@@ -1,0 +1,84 @@
+<template name="Intro">
+  <div class="intro">
+    <div class="address">
+      <div class="address-header">Pension Dorfstuben &bull; Ablachweg 6 &bull; 88512 Mengen-Ennetach</div>
+      
+      {{> TextField getConformTitle}}
+      
+      {{> TextField getConformName}}
+      
+      {{> TextField getConformAddress}}
+      
+    </div>
+    
+    <div class="items-document-details">
+      <table>
+        <tr detail-key="items-document-number">
+          <td>{{i18np itemsDocument.documentType "number"}}</td>
+          <td>{{> TextField getConformItemsDocumentNumber}}</td>
+        </tr>
+        <tr detail-key="items-document-date">
+          <td>{{i18np itemsDocument.documentType "date"}}</td>
+          <td>{{> TextField getConformDate}}</td>
+        </tr>
+      </table>
+    </div>
+    
+    {{#if isEditable}}
+      {{#if data.originId}}
+        <div class="original-customer">
+          {{#with getOriginalCustomer}}
+            {{#with ../..}}
+              <ul class="customer-actions">
+                <li>
+                  <div class="customer-action open-customer">
+                    <i class="material-icons">person</i>
+                  </div>
+                </li>
+                <li>
+                  <div class="customer-action remove-customer">
+                    <i class="material-icons">clear</i>
+                  </div>
+                </li>
+              </ul>
+            {{/with}}
+            <div class="customer">
+              <div>{{title}}</div>
+              <div>{{name}}</div>
+              <div>{{maintainLinebreaks address}}</div>
+            </div>
+          {{/with}}
+        </div>
+      {{else}}
+        <div class="original-customer">
+          <div class="save-customer">
+            <i class="material-icons">save</i>
+          </div>
+        </div>
+      {{/if}}
+    {{/if}}
+    {{> Template.contentBlock}}
+  </div>
+</template>
+
+<template name="TextField">
+  {{> _Concept_Component_Text}}
+</template>
+
+<template name="CustomerOptionItem">
+  <div>{{name}}</div>
+  <div>{{maintainLinebreaks address}}</div>
+</template>
+
+<template name="OptionsComponent">
+  <div class="options-component">
+    <div class="value" contenteditable="{{isEditable}}" placeholder="Name...">{{getValue value options/valueName}}</div>
+    {{#if hasOptions options.data}}
+      <ul class="options">
+        {{#each options.data}}
+          <li class="select-option" option-key="{{getValue this ../options/keyName}}">{{getValue this ../options/valueName}}</li>
+        {{/each}}
+      </ul>
+    {{/if}}
+  </div>
+</template>

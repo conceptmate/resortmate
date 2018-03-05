@@ -1,0 +1,9 @@
+<template name="TextBlockEdit">
+  <div class="card editor text-block-edit">
+    <h2 class="card-title">{{i18n 'textBlock.edit'}}</h2>
+    
+    {{#autoForm collection="TextBlocks" id="text-block-form" type=insertOrUpdate doc=textBlock meteormethod=insertOrUpdateMethod}}
+      {{> afQuickFields omitFields=defaultOmitFields}}
+    {{/autoForm}}
+  </div>
+</template>

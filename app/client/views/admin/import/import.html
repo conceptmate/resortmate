@@ -1,0 +1,19 @@
+<template name="Import">
+  <div class="card import">
+    <h2 class="card-title">Import</h2>
+  
+    <div class="row">
+      <div class="col-md-4">
+        <!--{{> BrowseFile id="importFiles" multiple=true}}-->
+        <input id="importFiles" type="file" multiple>
+      </div>
+    </div>
+    <br />
+    <div>
+      <button class="cc-button-invert do-import">Import</button>
+    </div>
+    <br />
+  
+    <textarea id="importOutput" readonly></textarea>
+  </div>
+</template>

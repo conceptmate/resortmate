@@ -1,0 +1,82 @@
+<template name="BookingsOverview">
+  <div class="card bookings-overview">
+    <h2 class="card-title">{{i18n 'bookings.timetable'}}</h2>
+    
+    {{#autoForm schema=Schemas.BookingOverviewSearch id="booking-overview-search-form" doc=dateRange}}
+      {{> afQuickField name='fromDate' placeholder=(i18n 'app.fromDate')}}
+      {{> afQuickField name='toDate' placeholder=(i18n 'app.toDate')}}
+      
+      <button type="submit" class="cc-button-invert">{{i18n 'app.refresh'}}</button>
+    {{/autoForm}}
+
+    <div class="gridy-wrapper">
+      {{> BookingTimetable}}
+    </div>
+  </div>
+</template>
+
+<template name="BookingTimetable">
+  <div class="gridy">
+    <div class="content-wrapper">
+      <div class="content-viewport">
+        
+        <ul class="columns">
+          {{#each timeline}}
+          <li date="{{formatDate date 'MM/DD/YYYY'}}">
+            <div class="day-month">{{formatDate date 'DD.MM.'}}</div>
+            <div class="year">{{formatDate date 'YYYY'}}</div>
+          </li>
+          {{/each}}
+        </ul>
+  
+        <ul class="grid">
+          {{#each bookings}}
+            {{> BookingBlock}}
+          {{/each}}
+        </ul>
+        
+        <table class="gridlines">
+          <tbody>
+            {{#each rooms}}
+              <tr>
+                {{#each ../timeline}}
+                  <td></td>
+                {{/each}}
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+
+      <ul class="rows">
+        {{#each rooms}}
+        <li room-id="{{_id}}">
+          <div class="cc-button-invert">{{name}}</div>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</template>
+
+<template name="BookingBlock">
+  <li booking-id="{{_id}}" data-row="{{row roomId}}" data-col="{{col arrivalDate}}" data-col-span="{{days}}">
+    <div>
+      <div class="open-booking">
+        <i class="material-icons">edit</i>
+      </div>
+      {{#with customer}}
+        <div class="customer">
+          <div class="open-customer">
+            <i class="material-icons">person</i>
+          </div>
+          <div class="customer-name">{{name}}</div>
+        </div>
+      {{/with}}
+      <div class="description">{{description}}</div>
+      <div class="delete-booking">
+        <i class="material-icons">delete</i>
+      </div>
+    </div>
+  </li>
+</template>

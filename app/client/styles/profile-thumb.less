@@ -1,0 +1,97 @@
+/* do not allow user selections, e.g., text selection */
+.profile-thumb {
+  * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
+    cursor: default;
+  }
+  
+  .thumb {
+    box-sizing: content-box;
+    position: relative;
+    text-align: center;
+    
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 3px solid white;
+    
+    background-color: white;
+  }
+  
+  img.picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    float: left;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+  
+  div.initials {
+    border-radius: 50%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 100%;
+  }
+  
+  .label {
+    margin-top: 5px;
+  }
+  
+  .selected-indicator {
+    position: absolute;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    z-index: 2;
+  }
+  
+  .selected-indicator:before {
+    content: "";
+    box-sizing: content-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    float: left;
+    text-align: center;
+    
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: deepskyblue;
+    opacity: .7;
+    z-index: -1;
+  }
+  
+  .status-indicator {
+    box-sizing: content-box;
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 23%;
+    height: 23%;
+    border-radius: 50%;
+    border: 2px solid white;
+    
+    /* default background color */
+    background-color: black;
+    z-index: 3;
+  }
+}

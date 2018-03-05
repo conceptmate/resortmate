@@ -1,0 +1,7 @@
+<template name="TableCellState">
+  {{#if isStateHandled}}
+    <i class="material-icons">check</i>
+  {{else}}
+    {{i18np documentType 'states.open'}}
+  {{/if}}
+</template>

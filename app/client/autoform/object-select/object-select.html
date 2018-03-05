@@ -1,0 +1,27 @@
+<template name="afObjectSelect">
+  <div class="object-select" {{this.atts}}>
+    {{#if hasValue}}
+      <div class="clear-object">
+        <i class="material-icons">close</i>
+      </div>
+      <div class="object">
+        {{> Template.dynamic template=templateName data=templateData}}
+      </div>
+    {{else}}
+      <input class="search-input" type="text" />
+      {{#if hasOptions}}
+        <ul class="object-select-options">
+          {{#each options}}
+            <li class="select-option" data-value="{{_id}}">
+              {{> Template.dynamic template=optionTemplateName data=this}}
+            </li>
+          {{/each}}
+        </ul>
+      {{/if}}
+    {{/if}}
+  </div>
+</template>
+
+<template name="afObjectSelectOptionTemplate">
+  {{this}}
+</template>

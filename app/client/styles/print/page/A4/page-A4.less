@@ -1,0 +1,42 @@
+@import '/client/styles/print/page/page-sizes.import.less';
+
+.page[page-size="A4"] {
+  width: @page-A4-width;
+  height: @page-A4-height;
+  
+  // display page information, e.g., Page 1 of 3
+  &:before {
+    bottom: @page-A4-margin-bottom + @page-A4-footer-height;
+  }
+  
+  header {
+    width: @page-A4-width - @page-A4-margin-left - @page-A4-margin-right;
+    height: @page-A4-header-height;
+    
+    margin-top: @page-A4-margin-top;
+    margin-left: @page-A4-margin-left;
+    margin-right: @page-A4-margin-right;
+  }
+  
+  footer {
+    width: @page-A4-width - @page-A4-margin-left - @page-A4-margin-right;
+    height: @page-A4-footer-height;
+    
+    margin-bottom: @page-A4-margin-bottom;
+    margin-left: @page-A4-margin-left;
+    margin-right: @page-A4-margin-right;
+    
+    .footer-item {
+      top: @page-A4-footer-height / 2;
+    }
+  }
+  
+  .page-content {
+    width: @page-A4-width - @page-A4-margin-left - @page-A4-margin-right;
+    height: @page-A4-height - @page-A4-margin-top - @page-A4-margin-bottom - @page-A4-header-height - @page-A4-footer-height;
+    margin-top: @page-A4-margin-top + @page-A4-header-height;
+    margin-right: @page-A4-margin-right;
+    margin-bottom: @page-A4-margin-bottom + @page-A4-footer-height;
+    margin-left: @page-A4-margin-left;
+  }
+}

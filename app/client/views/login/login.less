@@ -1,0 +1,102 @@
+@import (reference) '/client/styles/base.import.less';
+
+.at-form {
+  float: left;
+  
+  position: relative;
+  top: 100px;
+  left: 50%;
+  
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  
+  .at-title {
+    display: none;
+  }
+  
+  .at-error {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .at-input {
+    background-color: transparent;
+    font-size: 18px;
+    
+    label {
+      display: none;
+    }
+    
+    input:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0px 1000px @navigation-background-color inset;
+      -webkit-text-fill-color: white !important;
+    }
+    
+    input {
+      color: white;
+      font-size: inherit;
+      background: none;
+      border: none;
+      box-shadow: none;
+      border-bottom: 2px solid white;
+      border-radius: 0;
+      height: 46px;
+      padding: 10px 16px;
+      line-height: 1.3333333;
+      min-width: 300px;
+      
+      &:focus {
+        outline: 0;
+        // border: none;
+      }
+    }
+  }
+  
+  .at-signup-link {
+    position: relative;
+    top: 140px;
+  }
+  
+  .at-btn {
+    .default-button();
+  }
+  
+  .submit {
+    position: relative;
+    top: 0px;
+    left: 50%;
+    min-width: 120px;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    
+    clear: both;
+    font-family: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+  }
+  
+  .at-pwd-link {
+    position: relative;
+    top: 100px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    
+    text-align: center;
+    clear: both;
+  }
+  
+  .at-link {
+    .default-button();
+  }
+}

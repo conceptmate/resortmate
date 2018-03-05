@@ -1,0 +1,109 @@
+<template name="ItemsDocumentPrint">
+  <div class="pages items-document"></div>
+</template>
+
+<template name="Page">
+  <div class="page" page-size="{{pageSize}}" page-number="{{pageNumber}}" page-info="{{pageInfo}}">
+    <header>{{> PageHeader}}</header>
+    <section class="page-content">
+      {{> Template.contentBlock}}
+    </section>
+    <footer>{{> PageFooter}}</footer>
+  </div>
+</template>
+
+<template name="OrderItems">
+  <div class="order-items"></div>
+</template>
+
+<template name="PageTable">
+  <table class="page-table">
+    <thead>
+      <tr>
+        {{#if isEditable}}
+          <th collapsed="true"></th>
+        {{/if}}
+        {{#each columns}}
+          <th column="{{key}}">{{label}}</th>
+        {{/each}}
+      </tr>
+    </thead>
+    <tbody>
+      {{#each items}}
+        {{> PageTableItem columns=../columns item=this index=@index isEditable=../isEditable docId=../docId}}
+      {{/each}}
+    </tbody>
+  </table>
+</template>
+
+<template name="PageTableItem">
+  <tr class="page-table-item">
+    {{#if isEditable}}
+      <td collapsed="true">
+        <div class="delete-item">
+          <i class="material-icons">clear</i>
+        </div>
+      </td>
+    {{/if}}
+    {{#each columns}}
+      {{> PageTableCell column=this item=../item index=../index docId=../docId}}
+    {{/each}}
+  </tr>
+</template>
+
+<!--<template name="PageTableCell">
+  <td column="{{column.key}}">
+    <div data-modifier="{{index}}.{{column.key}}" contenteditable="{{column.isEditable}}" placeholder="{{column.placeholder}}" prefix="{{safeString column.prefix}}" suffix="{{safeString column.suffix}}">{{#unless column.isEditable}}{{{getValue item column index}}}{{/unless}}</div>
+    {{#if hasOptions}}
+      <ul class="options">
+        {{#each options}}
+          <li class="select-item">{{description}}</li>
+        {{/each}}
+      </ul>
+    {{/if}}
+    {{#if column.isEditable}}
+      {{updateValue item column index}}
+    {{/if}}
+  </td>
+</template>-->
+
+<template name="PageTableCell">
+  <td column="{{column.key}}">
+    {{> _Concept_Component_Text getData}}
+  </td>
+</template>
+
+<template name="OrderSum">
+  <div class="order-sum">
+    <span>{{i18n "items_document.totalSum"}}</span>
+    <span class="total-sum" prefix="{{safeString data.prefix}}">{{data.totalSum}}</span>
+  </div>
+</template>
+
+<template name="PageHeader">
+  <div class="page-header" contenteditable="{{isEditable}}">
+    <div class="logo"></div>
+  </div>
+</template>
+
+<template name="PageFooter">
+  <div class="page-footer">
+    <div contenteditable="{{isEditable}}">
+      <div class="footer-item">
+        <b>Pension Dorfstuben</b><br />
+        Ablachweg 6 &bull; 88512 Mengen-Ennetach<br />
+        Tel.: (0 75 72) 71 29 95 &bull; Fax.: (0 75 72) 76 03 87<br />
+        Internet: www.pension-dorfstuben.de<br />
+        E-Mail: info@pension-dorfstuben.de
+      </div>
+      <div class="footer-item">
+        <b>Bankverbindung</b><br />
+        Volksbank Bad Saulgau eG<br />
+        IBAN DE83 6509 3020 0362 8550 05<br />
+        BIC GENODES1SLG<br />
+        USt-IdNr. DE14 6594 707
+      </div>
+    </div>
+    <div class="logo"></div>
+  </div>
+</template>

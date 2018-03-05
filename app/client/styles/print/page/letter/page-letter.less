@@ -1,0 +1,42 @@
+@import '/client/styles/print/page/page-sizes.import.less';
+
+.page[page-size="letter"] {
+  width: @page-letter-width;
+  height: @page-letter-height;
+  
+  // display page information, e.g., Page 1 of 3
+  &:before {
+    bottom: @page-letter-margin-bottom + @page-letter-footer-height;
+  }
+  
+  header {
+    width: @page-letter-width - @page-letter-margin-left - @page-letter-margin-right;
+    height: @page-letter-header-height;
+    
+    margin-top: @page-letter-margin-top;
+    margin-left: @page-letter-margin-left;
+    margin-right: @page-letter-margin-right;
+  }
+  
+  footer {
+    width: @page-letter-width - @page-letter-margin-left - @page-letter-margin-right;
+    height: @page-letter-footer-height;
+    
+    margin-bottom: @page-letter-margin-bottom;
+    margin-left: @page-letter-margin-left;
+    margin-right: @page-letter-margin-right;
+    
+    .footer-item {
+      top: @page-letter-footer-height / 2;
+    }
+  }
+  
+  .page-content {
+    width: @page-letter-width - @page-letter-margin-left - @page-letter-margin-right;
+    height: @page-letter-height - @page-letter-margin-top - @page-letter-margin-bottom - @page-letter-header-height - @page-letter-footer-height;
+    margin-top: @page-letter-margin-top + @page-letter-header-height;
+    margin-right: @page-letter-margin-right;
+    margin-bottom: @page-letter-margin-bottom + @page-letter-footer-height;
+    margin-left: @page-letter-margin-left;
+  }
+}

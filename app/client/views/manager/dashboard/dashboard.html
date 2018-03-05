@@ -1,0 +1,13 @@
+<template name="Dashboard">
+  <div class="dashboard">
+    <div class="data-table">
+      {{#if isInRole 'curator,manager,admin' currentDomain}}
+        {{> BookingsOverview}}
+      {{/if}}
+      
+      {{#if isInRole 'accountant,manager,admin' currentDomain}}
+        {{> ItemsDocumentList subscriptionName='table-open-offers' title=(i18n 'offers.list_open') i18nPrefix='offer' documentType='offer'}}
+      {{/if}}
+    </div>
+  </div>
+</template>

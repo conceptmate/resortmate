@@ -1,0 +1,16 @@
+.paper-text-box {
+    
+  .text-box-input[contenteditable="true"] {
+    width: 100%;
+    
+    // need to set input as inline-block, so contenteditable adds <br> as
+    // linebreaks instead of <div> elements
+    display: inline-block;
+    
+    // hack to make inline-block spanning accross parent element. it will be
+    // added only if element is empty
+    &:empty:after {
+      content: '\00a0';
+    }
+  }
+}

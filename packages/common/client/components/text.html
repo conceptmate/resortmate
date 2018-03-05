@@ -1,0 +1,21 @@
+<template name="_Concept_Component_Text">
+  <div concept-component="text" contenteditable="{{isEditable}}" placeholder="{{placeholder}}" prefix="{{safeString prefix}}" suffix="{{safeString suffix}}" {{attributes}}>{{#unless isEditable}}{{{getValue}}}{{/unless}}</div>
+  
+  <!--{{#if isEditable}}-->
+    {{updateValue}}
+    
+    {{#if hasOptions}}
+      <ul class="options">
+        {{#each getOptionsData}}
+          <li class="select-option" option-key="{{getValue this ../options/keyName}}">
+            {{#if hasOptionTemplate ..}}
+              {{> Template.dynamic template=../options/optionTemplateName data=this}}
+            {{else}}
+              {{{getOptionValue this ../options/valueName}}}
+            {{/if}}
+          </li>
+        {{/each}}
+      </ul>
+    {{/if}}
+  <!--{{/if}}-->
+</template>

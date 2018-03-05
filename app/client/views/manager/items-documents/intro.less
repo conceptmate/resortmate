@@ -1,0 +1,108 @@
+@import (reference) '/client/styles/base.import.less';
+
+.options {
+  
+  & {
+    list-style-type: none;
+    list-style: none;
+  
+    li {
+      padding: 5px;
+      cursor: pointer;
+      &:hover {
+        background-color: deepskyblue;
+      }
+    }
+  }
+  
+  position: absolute;
+  max-height: 150px;
+  overflow: hidden;
+  overflow-y: auto;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  z-index: 999;
+  width: 100%;
+  max-width: 250px;
+  float: left;
+          
+  background-color: white;
+  border: 1px solid gray;
+  padding: 5px;
+  // margin: 0 0 0 -5px;
+  box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+}
+
+.original-customer {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+  float: right;
+  width: 50%;
+  
+  .customer {
+    display: inline-block;
+  }
+  
+  .save-customer {
+    cursor: pointer;
+  }
+  
+  ul.customer-actions {
+    display: inline-block;
+    vertical-align: top;
+    
+    li {
+      // float: left;
+      cursor: pointer;
+      
+      .open-customer {
+        color: @navigation-background-color;
+        
+        &:hover {
+          color: lighten(@navigation-background-color, 10%);
+        }
+      }
+      
+      .remove-customer {
+        color: darkred;
+      
+        &:hover {
+          color: red;
+        }
+      }
+    }
+  }
+}
+
+.items-document-details {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  float: left;
+  font-size: 0.8em;
+  
+  & > * {
+    text-align: right;
+  }
+  
+  td {
+    padding: 0 0 0 5px;
+    vertical-align: baseline;
+  }
+  
+  *[detail-key="items-document-number"] {
+    & > *:nth-child(1) {
+      text-align: right;
+      font-weight: bold;
+    }
+  }
+  
+  *[detail-key="items-document-date"] {
+    & > *:nth-child(1) {
+      text-align: right;
+      font-weight: bold;
+    }
+  }
+}

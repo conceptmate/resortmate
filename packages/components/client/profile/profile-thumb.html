@@ -1,0 +1,62 @@
+<template name="ProfileThumb">
+  <div class="profile-thumb">
+    {{#if userImage user}}
+      <div class="thumb">
+        {{> SelectedIndicator}}
+        <img class="picture" src="{{userImage user}}">
+        {{> StatusIndicator}}
+      </div>
+    {{else}}
+      {{#if userInitials user}}
+        {{#with userInitials user}}
+          <div class="thumb" style="background-color: {{backgroundColor}};">
+            {{#with ..}}
+              {{> SelectedIndicator}}
+            {{/with}}
+            <div class="initials">{{{html}}}</div>
+            {{#with ..}}
+              {{> StatusIndicator}}
+            {{/with}}
+          </div>
+        {{/with}}
+      {{else}}
+        {{#if image}}
+          <div class="thumb">
+            {{> SelectedIndicator}}
+            <img class="picture" src="{{image}}">
+            {{> StatusIndicator}}
+          </div>
+        {{else}}
+          <div class="thumb" style="background-color: white;">
+            {{> SelectedIndicator}}
+            <div class="initials" style="color: black;">N/A</div>
+            {{> StatusIndicator}}
+          </div>
+        {{/if}}
+      {{/if}}
+    {{/if}}
+    
+    {{#if name}}
+      {{> Label}}
+    {{/if}}
+  </div>
+</template>
+
+<template name="SelectedIndicator">
+	{{#if isSelected}}
+		<div class="selected-indicator">
+      <div class="background"></div>
+      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 400 400" enable-background="new 0 0 400 400" xml:space="preserve">
+        <polygon fill="#FFFFFF" points="155.9,256.7 76.7,177.4 49.6,204.5 128.8,283.7 155.9,310.8 183,283.7 350.4,116.3 323.3,89.2 "/>
+      </svg>
+    </div>
+	{{/if}}
+</template>
+
+<template name="StatusIndicator">
+	<div class="status-indicator"></div>
+</template>
+
+<template name="Label">
+	<div class="label">{{name}}</div>
+</template>

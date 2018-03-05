@@ -1,0 +1,8 @@
+<template name="CountersEdit">
+  <div class="card editor counters-edit">
+    <h2 class="card-title">{{i18n 'navigation.admin.counters'}}</h2>
+    {{#autoForm schema=Schemas.Counters id="counters-form" type="normal" doc=counters}}
+      {{> afQuickField name='counters'}}
+    {{/autoForm}}
+  </div>
+</template>

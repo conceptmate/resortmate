@@ -1,0 +1,182 @@
+@import (reference) '/client/styles/base.import.less';
+
+.bookings-overview {
+  
+  @row-width: 120px;
+  @column-height: 40px;
+  
+  .gridy .grid li {
+    overflow: hidden;
+    border: 1px solid white;
+  }
+  
+  .gridy-wrapper {
+    // background-color: rebeccapurple;
+    padding: 5px;
+    margin-top: 40px;
+  }
+  
+  .gridy {
+    // overflow: hidden;
+    
+    .content-wrapper {
+      position: relative;
+      padding-left: @row-width;
+      width: 100%;
+      height: 100%;
+      
+      .content-viewport {
+        // border: 2px solid @navigation-background-color;
+        // margin-left: 10px;
+        border-radius: 2px;
+        overflow: scroll;
+        overflow-y: hidden;
+      }
+    
+      .columns,
+      .grid {
+        position: relative;
+        left: 0 !important;
+        top: 0 !important;
+      }
+    }
+    
+    .rows {
+      top: @column-height;
+      
+      li {
+        border-top: 1px solid @navigation-background-color;
+        border-bottom: 1px solid @navigation-background-color;
+        // border-right: 1px solid @navigation-background-color;
+        padding: 5px;
+        text-align: center;
+      }
+    }
+    
+    .customer {
+      & > * {
+        float: left;
+      }
+      
+      .open-customer {
+        padding: 2px;
+        color: black;
+        cursor: pointer;
+        
+        &:hover {
+          color: lighten(black, 30%);
+        }
+      }
+      
+      .customer-name {
+        padding: 2px;
+      }
+    }
+    
+    .description {
+      clear: both;
+      padding: 5px;
+    }
+    
+    .open-booking {
+      padding: 2px;
+      color: black;
+      cursor: pointer;
+      float: left;
+        
+      &:hover {
+        color: lighten(black, 30%);
+      }
+    }
+      
+    .delete-booking {
+      padding: 2px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      float: right;
+      color: darkred;
+      cursor: pointer;
+      
+      &:hover {
+        color: red;
+      }
+    }
+  }
+  
+  .gridy {
+    .columns {
+      .no-text-select();
+      
+      height: @column-height;
+      // background-color: orange;
+      
+      li {
+        float: left;
+        height: @column-height;
+        border-left: 1px solid @navigation-background-color;
+        border-right: 1px solid @navigation-background-color;
+        
+        .day-month {
+          font-weight: bold;
+          text-align: left;
+          padding-left: 5px;
+        }
+        
+        .year {
+          text-align: right;
+          padding-right: 5px;
+        }
+      } 
+    }
+    
+    .rows {
+      .no-text-select();
+      
+      width: @row-width;
+      // background-color: lime;
+      
+      li {
+        & > * {
+          position: relative;
+          top: 50%;
+          -webkit-transform: translateY(-50%);
+          -moz-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+          -o-transform: translateY(-50%);
+          transform: translateY(-50%);
+        }
+        width: @row-width;
+        // margin-right: 50px;
+      }
+    }
+    
+    .grid {
+      background-color: transparent;
+      overflow: hidden;
+      z-index: 1;
+      li {
+        font-family: inherit;
+        font-style: inherit;
+        font-weight: inherit;
+        
+        color: white;
+        border-radius: 2px;
+        background-color: @navigation-background-color;
+      }
+    }
+    
+    .gridlines {
+      border-spacing: 0;
+      position: relative;
+      left: 0;
+      background-color: white;
+      // opacity: .5;
+      z-index: 0;
+      
+      td {
+        border: 1px solid @navigation-background-color;
+      }
+    }
+  }
+}

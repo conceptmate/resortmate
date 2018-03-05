@@ -1,0 +1,31 @@
+<template name="ItemsDocumentEdit">
+  <div class="pages input-form items-document items-document-edit">
+    {{#Page pageSize="infinite" pageNumber="1" pageInfo="Seite 1 von 1"}}
+    
+      {{> Intro data=itemsDocument.customer itemsDocument=itemsDocument foundCustomers=foundCustomers isEditable=true docId=itemsDocument._id}}
+      
+      {{#TextBox options=options}}
+        {{i18np itemsDocument.documentType "title"}}
+      {{/TextBox}}
+      
+      {{> TextBox getConformPrefix}}
+      
+      {{> PageTable columns=columns items=itemsDocument.items isEditable=true docId=itemsDocument._id}}
+    
+      {{#TextBox}}
+        <div class="add-item">
+          <i class="material-icons">add</i> {{i18n "items_document.items.add"}}
+        </div>
+      {{/TextBox}}
+      
+      {{> OrderSum data=getSum}}
+      
+      {{#TextBox}}
+        {{{getSumMessage}}}
+      {{/TextBox}}
+      
+      {{> TextBox getConformSuffix}}
+    
+    {{/Page}}
+  </div>
+</template>

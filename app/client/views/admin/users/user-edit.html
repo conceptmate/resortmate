@@ -1,0 +1,31 @@
+<template name="UserEdit">
+  <div class="card editor user-edit">
+    <!--{{> quickForm collection="Meteor.users" id="user-form" type=insertOrUpdate doc=user}}-->
+    {{#autoForm collection="Meteor.users" id="user-form" type=insertOrUpdate doc=user}}
+      {{> afQuickFields omitFields=defaultOmitFields}}
+      
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Domains</h3>
+        </div>
+        <div class="panel-body">
+          {{#each domains user}}
+            <div class="form-group">
+              <label>{{this}}</label>
+              <div>
+                <ul class="roles">
+                  {{#each roles}}
+                  <li>
+                    <input class="change-role" type="checkbox" name="{{name}}" value="{{name}}" checked={{hasRole ../../user ..}} />{{#if description}}{{description}}{{else}}{{name}}{{/if}}
+                  </li>
+                  {{/each}}
+                </ul>
+              </div>
+              <span class="help-block"></span>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    {{/autoForm}}
+  </div>
+</template>

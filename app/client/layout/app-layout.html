@@ -1,0 +1,130 @@
+<template name="AppLayout">
+  <div class="app-layout" app="resort-mate" debug="true">
+    <section class="app-navigation">
+      {{#with currentUser}}
+        <div class="user">
+          <div class="username hcenter">{{friendlyName this}}</div>
+          {{> ProfileThumb user-id=_id}}
+          <div class="domain">{{domain}}</div>
+          <div class="cc-button logout hcenter" action="logout">{{i18n 'app.logout'}}</div>
+        </div>
+      {{/with}}
+        <ul class="app-navigation-menu">
+          <li class="navigation-item {{isRouteActive routeNames='dashboard'}}">
+            <div class="cc-button-flat" route="dashboard">{{i18n "navigation.dashboard"}}</div>
+          </li>
+        </ul>
+        {{#if isInRole 'curator,manager,admin' currentDomain}}
+          <ul class="app-navigation-menu">
+            <li class="title">{{i18n "navigation.curation.title"}}</li>
+            <li class="navigation-item {{isRouteActive routeNames='customers,cutomer.add,customer.edit'}}">
+              <div class="cc-button-flat" route="customers">{{i18n "navigation.customers"}}</div>
+            </li>
+            <li class="navigation-item {{isRouteActive routeNames='bookings,booking.add,booking.edit,bookings.timetable'}}">
+              <div class="cc-button-flat" route="bookings" flag="beta">{{i18n "navigation.bookings"}}</div>
+            </li>
+          </ul>
+        {{/if}}
+        {{#if isInRole 'accountant,manager,admin' currentDomain}}
+          <ul class="app-navigation-menu">
+            <li class="title">{{i18n "navigation.accounting.title"}}</li>
+            <li class="navigation-item {{isRouteActive routeNames='items-documents,items-document.add,items-document.edit' documentType='offer'}}">
+              <div class="cc-button-flat" route="items-documents" route-data-document-type="offer">{{i18n "navigation.offers"}}</div>
+            </li>
+            <li class="navigation-item {{isRouteActive routeNames='items-documents,items-document.add,items-document.edit' documentType='invoice'}}">
+              <div class="cc-button-flat" route="items-documents" route-data-document-type="invoice">{{i18n "navigation.invoices"}}</div>
+            </li>
+            <li class="navigation-item {{isRouteActive routeNames='text-blocks,text-block.add,text-block.edit'}}">
+              <div class="cc-button-flat" route="text-blocks">{{i18n "navigation.textBlocks"}}</div>
+            </li>
+            <li class="navigation-item {{isRouteActive routeNames='items,item.add,item.edit'}}">
+              <div class="cc-button-flat" route="items">{{i18n "navigation.items"}}</div>
+            </li>
+            <li class="navigation-item {{isRouteActive routeNames='rooms,room.add,room.edit'}}">
+              <div class="cc-button-flat" route="rooms" flag="beta">{{i18n "navigation.rooms"}}</div>
+            </li>
+          </ul>
+        {{/if}}
+        {{#if isInRole 'admin' currentDomain}}
+          <ul class="app-navigation-menu">
+            <li class="title">{{i18n "navigation.admin.title"}}</li>
+            <li class="navigation-item {{isRouteActive routeNames='admin.users'}}">
+              <div class="cc-button-flat" route="admin.users">{{i18n "navigation.admin.users"}}</div>
+            </li>
+            <li class="navigation-item {{isRouteActive routeNames='admin.counters.edit'}}">
+              <div class="cc-button-flat" route="admin.counters.edit">{{i18n "navigation.admin.counters"}}</div>
+            </li>
+            <li class="navigation-item {{isRouteActive routeNames='admin.backups'}}">
+              <div class="cc-button-flat" route="admin.backups">{{i18n "navigation.admin.backups"}}</div>
+            </li>
+          </ul>
+        {{/if}}
+    </section>
+    <section class="app-main">
+      <div class="app-main-content">
+        {{> yield}}
+      </div>
+      <div class="box-bow">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+          <path d="M0,0v100h100C44.771,100,0,55.229,0,0z"/>
+        </svg>
+      </div>
+      <div class="content-actions-toolbar">
+        {{> UndoRedoActions}}
+        
+        {{> yield "actions"}}
+      </div>
+    </section>
+    <!--<section class="app-footer">
+      {{> yield "footer"}}
+    </section>-->
+  
+    {{> ModalDialog}}
+  </div>
+</template>
+
+<template name="ContentActions">
+  {{#if actions}}
+    <ul class="content-actions">
+      {{#each actions}}
+        {{#if isActiveOrUndefined}}
+          <li>
+            <div class="cc-button action">{{name}}</div>
+          </li>
+        {{/if}}
+      {{/each}}
+    </ul>
+  {{/if}}
+</template>
+
+<template name="UndoRedoActions">
+  <ul class="undo-redo-actions">
+    <li>
+      <div class="cc-button undo-action {{hideUndoButton}} {{undoRedoButtonclass}}">
+        {{i18n 'app.undo'}}
+      </div>
+    </li>
+    <li>
+      <div class="cc-button redo-action {{hideRedoButton}} {{undoRedoButtonclass}}">
+        {{i18n 'app.redo'}}
+      </div>
+    </li>
+  </ul>
+</template>
+
+<template name="ModalDialog">
+  <div class="modal-dialog">
+    {{#with modalDialogContext}}
+      <div>
+        <div class="title">{{{title}}}</div>
+    
+        <p class="message">{{{message}}}</p>
+        
+        <div class="actions">
+          <div class="cc-button-invert modal-dialog-ok">{{i18n 'ok'}}</div>
+          <div class="cc-button-invert modal-dialog-cancel">{{i18n 'cancel'}}</div>
+        </div>
+      </div>
+    {{/with}}
+  </div>
+</template>

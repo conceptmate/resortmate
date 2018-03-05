@@ -1,0 +1,81 @@
+/* CSS declarations go here */
+
+/* Prevent the text contents of draggable elements from being selectable. */
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}
+
+.gridy {
+  box-sizing: border-box;
+  position: relative;
+  clear: both;
+}
+
+.gridy .columns {
+  box-sizing: inherit;
+  position: absolute;
+  top: 0;
+  left: 60px;
+}
+
+.gridy .rows {
+  box-sizing: inherit;
+  position: absolute;
+  top: 40px;
+  left: 0;
+}
+
+.gridy .grid {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  list-style-type: none;
+  
+  position: absolute;
+  left: 60px;
+  top: 40px;
+  background-color: deeppink;
+}
+
+.gridy ul.grid li {
+  box-sizing: inherit;
+  cursor: move;
+  background-color: deepskyblue;
+}
+
+.gridy ul.grid li.dragging {
+  z-index: 1;
+  opacity: .9;
+  transition: opacity .5s;
+}
+
+.gridy ul.grid li.ghost {
+  z-index: 0;
+  opacity: .5;
+  transition: opacity .5s;
+}
+
+.gridy .grid .block {
+  position: absolute;
+  transition: top .5s, left .5s;
+}
+
+.gridy ul.grid li.block.collision {
+  background-color: red !important;
+  /*height: 50% !important;*/
+  
+  /*transition: top .5s;
+  transition: height .5s;*/
+}
+
+.gridy ul.grid li.block.collision-cause {
+  background-color: orange !important;
+  /*height: 50% !important;*/
+}

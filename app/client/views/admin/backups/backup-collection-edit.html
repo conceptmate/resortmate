@@ -1,0 +1,9 @@
+<template name="BackupCollectionEdit">
+  <div class="card editor backup-collection-edit">
+    <h2 class="card-title">{{i18n 'backup.collection.edit'}}</h2>
+    
+    {{#autoForm collection="ConceptMate.Collections.BackupCollections" id="backup-collection-form" type=insertOrUpdate doc=backupCollection meteormethod=insertOrUpdateMethod}}
+      {{> afQuickFields omitFields=defaultOmitFields}}
+    {{/autoForm}}
+  </div>
+</template>

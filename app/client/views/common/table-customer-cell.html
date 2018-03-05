@@ -1,0 +1,8 @@
+<template name="TableCustomerCell">
+  {{#with customer customerId}}
+    <div class="customer">
+      <div class="name">{{name}}</div>
+      <div class="address">{{{maintainLinebreaks address}}}</div>
+    </div>
+  {{/with}}
+</template>

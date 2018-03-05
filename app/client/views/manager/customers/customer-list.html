@@ -1,0 +1,9 @@
+<template name="CustomerList">
+  <div class="card customer-list">
+    <h2 class="card-title">{{i18n 'customers.list'}}</h2>
+    
+    <div class="data-table">
+      {{> reactiveTable settings=Tables.Customers}}
+    </div>
+  </div>
+</template>

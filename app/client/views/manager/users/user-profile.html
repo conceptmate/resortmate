@@ -1,0 +1,8 @@
+<template name="UserProfile">
+  <div class="card editor user-profile">
+    <h2 class="card-title">{{i18n 'userProfile.edit'}}</h2>
+    {{#autoForm schema=schema doc=userProfile id="user-profile-form" type="method-update" meteormethod="updateUserProfile"}}
+      {{> afQuickFields omitFields=defaultOmitFields}}
+    {{/autoForm}}
+  </div>
+</template>

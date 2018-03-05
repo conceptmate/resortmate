@@ -1,0 +1,364 @@
+@import (reference) '/client/styles/variables.import.less';
+
+// *[app="resort-mate"][debug="true"] {
+ .debug-label(@label, @border-color, @color: white) {
+    @color: transparent;
+    @border-color: transparent;
+    
+    outline: 1px dashed @border-color;
+    &:after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      // float: right;
+      z-index: 99;
+      font-size: 8pt;
+      font-weight: normal;
+      text-decoration: none;
+      text-align: right;
+      text-transform: none;
+      letter-spacing: 0pt;
+      
+      opacity: .5;
+      color: @color;
+      padding: 2px 5px 2px 5px;
+      
+      content: @label;
+      outline: 1px dashed @border-color;
+      background-color: @border-color;
+    }
+  } 
+// }
+
+.no-text-select() {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+.default-button(@color: white, @background-color: transparent) {
+  .no-text-select();
+  
+  outline: 0;
+  border: 2px solid @color;
+  border-radius: 50px;
+  padding: 5px 10px;
+  
+  color: @color;
+  background-color: @background-color;
+  text-decoration: none;
+  font-size: 18px;
+  
+  opacity: .8;
+  
+  &:hover {
+    opacity: 1.0;
+  }
+}
+
+.default-button-invert() {
+  .default-button(@navigation-background-color);
+}
+
+.user-thumb-size(@size: 55px) {
+  .thumb {
+    width: @size;
+    height: @size;
+    // background-color: #000;
+  }
+  
+  img.picture {
+    width: @size;
+    height: @size;
+    // background-color: #000;
+  }
+  
+  div.initials {
+    font-size: @size * 0.4;
+  }
+}
+
+.user-thumb-display(@display: block) {
+  display: @display;
+}
+
+.user-thumb-name(@visible: block) {
+  .label {
+    display: @visible;
+  }
+}
+
+.user-thumb-indicator(@visible: block) {
+  .status-indicator {
+    display: @visible;
+  }
+}
+
+.user-thumb-border(@border: 3px solid white) {
+  .thumb {
+    border: @border;
+    // background-color: #000;
+  }
+}
+
+html,
+body {
+  
+  font-family: @font-family-base;
+  font-weight: 300;
+  background-color: @navigation-background-color;
+
+  *,
+  *:before,
+  *:after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .hidden {
+    display: none;
+  }
+  
+  & *[app="resort-mate"] {
+    
+    // & * {
+    //   margin: 0;
+    //   padding: 0;
+    // }
+    
+    ul {
+      list-style-type: none;
+      list-style: none;
+    }
+    
+    .card {
+      min-height: 100px;
+      min-width: 350px;
+      margin: 20px;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+      border-radius: 2px;
+      transition: box-shadow .25s;
+      
+      .card-title {
+        .no-text-select();
+        font-family: inherit;
+        font-weight: inherit;
+        font-style: inherit;
+        // position: absolute;
+        margin-bottom: 20px;
+        float: left;
+      }
+    }
+    
+    table {
+      width: 100%;
+      
+      thead > tr > th {
+        text-align: left;
+      }
+    }
+    
+    & *[contenteditable="true"] {
+      width: 100%;
+      outline: none;
+        
+      // need to set input as inline-block, so contenteditable adds <br> as
+      // linebreaks instead of <div> elements
+      display: inline-block;
+        
+      margin-bottom: -2px;
+      border-bottom: 2px dashed #CCC;
+      
+      &:focus,
+      &:hover {
+        margin-bottom: -2px;
+        border-bottom: 2px dashed deepskyblue;
+      }
+      
+      &:empty:before {
+        content: attr(placeholder);
+        opacity: .3;
+        display: inline-block; /* For Firefox */
+      }
+        
+      // hack to make inline-block spanning accross parent element. it will be
+      // added only if element is empty
+      &:empty:after {
+        content: '\00a0';
+      }
+    }
+    
+    & [prefix]:before {
+      content: attr(prefix);
+      // opacity: .3;
+      // display: block; /* For Firefox */
+      position: relative;
+    }
+    
+    & [suffix]:after {
+      content: attr(suffix);
+      // opacity: .3;
+      // display: block; /* For Firefox */
+      position: relative;
+      // display: block;
+      // right: 0;
+      float: right;
+    }
+    
+    .circle-button {
+      width: 50px;
+      height: 50px;
+      color: white;
+      background-color: deepskyblue;
+      border-radius: 50%;
+      cursor: pointer;
+      
+      &:hover {
+        background-color: deeppink;
+      }
+    
+      text-align: center;
+      i {
+        position: relative;
+        top: 50%;
+        
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+      }
+    }
+    
+    input:-webkit-autofill {
+      outline: 0;
+      border: 0;
+      -webkit-box-shadow: 0 0 0px 1000px white inset;
+      -webkit-text-fill-color: black !important;
+    }
+    
+    form {
+      width: 100%;
+      margin: 0 auto;
+      
+      .panel-heading {
+        .no-text-select();
+        margin-top: 50px;
+      }
+      
+      .panel-body {
+        width: 100%;
+      }
+      
+      label {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      
+      .form-group {
+        clear: both;
+        margin: 5px;
+        min-height: 30px;
+        
+        // label
+        & > *:nth-child(1) {
+          // label {
+            .no-text-select();
+            font-weight: bold !important;
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+            width: 20%;
+            min-width: 100px;
+            vertical-align: top;
+            // text-align: right;
+            // background-color: green;
+            
+            color: @navigation-background-color;
+            border: 2px solid @navigation-background-color;
+            border-radius: 50px;
+            padding: 5px 10px;
+            // padding-left: 20px;
+          // }
+        }
+        
+        & > *:nth-child(2) {
+          display: inline-block;
+          // float: left;
+          width: 79%;
+          min-width: 300px;
+          text-align: left;
+          // clear: right;
+          
+          font-weight: 300 !important;
+        }
+      }
+      
+      .img-rounded {
+        border-radius: 50%;
+        border: 5px solid @navigation-background-color;
+        margin-bottom: 10px;
+      }
+      
+      .img-rounded + div {
+        margin-bottom: 10px;
+      }
+    
+      .js-af-remove-file {
+        .default-button();
+        color: darkred;
+        border-color: darkred;
+        padding: 5px 10px;
+        margin: 20px 0;
+      }
+      
+      .js-af-select-file {
+        .default-button-invert();
+        padding: 5px 10px;
+        font-family: inherit;
+        font-style: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+      }
+      
+      input,
+      textarea,
+      select {
+        outline: none;
+        font-family: inherit;
+        font-size: inherit;
+        min-height: 30px;
+        
+        border: 0;
+        border: 2px solid transparent;
+        padding: 5px 10px;
+        
+        &:not([readonly]) {
+          border-bottom: 2px solid darkgray;
+          &:hover,
+          &:focus {
+            border-bottom: 2px solid @navigation-background-color;
+          }
+        }
+        
+        &[readonly] {
+          color: gray;
+        }
+      }
+      
+      textarea {
+        resize: none;
+      }
+      
+      input[type="checkbox"] {
+        width: 30px;
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+@import '/client/styles/print/page/page-sizes.import.less';
+
+.page[page-size="A4"] {
+  @media print {
+    
+    & {
+      // display page information, e.g., Page 1 of 3
+      // re-position page info for printing
+      &:before {
+        bottom: @page-A4-footer-height !important;
+      }
+    }
+    
+    @page {
+      margin-top: @page-A4-margin-top;
+      margin-left: @page-A4-margin-left;
+      margin-right: @page-A4-margin-right;
+      
+      // need to remove 1mm from bottom margin, otherwise it will
+      // result in page-break for default page margins
+      margin-bottom: @page-A4-margin-bottom - 1mm;
+    }
+  }
+}

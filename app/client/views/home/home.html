@@ -1,0 +1,86 @@
+<template name="Home">
+  <div app="resort-mate">
+    <div class="home">
+      <div class="card">
+        
+        <div class="hcenter">
+          <div class="welcome">{{i18n 'app.welcome'}}</div>
+          
+          <p class="description">
+            Resort Mate is a booking management and invoicing app for pensions and hotels. We started the development of
+            Resort Mate because we found that existing management software for hotels are far too complex with functions
+            that are not needed to manage pensions or small-scale hotels. Resort Mate has a simple role management and
+            access management and if permissions are granted data can be accessed from within any browser. Currently,
+            only Google Chrome for desktop version 45 or higher is supported. Other browser might work but can lead to
+            unexpected application behavior. We have support of other major browsers and a version for mobile devices on
+            our roadmap, which will be available on release of Resort Mate.
+          </p>
+          <img class="teaser-image" src="/images/dashboard.png" alt="Dashboard" />
+          <img class="teaser-image" src="/images/invoice.png" alt="Invoice" />
+          <p class="description">
+            In the meantime you can test an alpha release of Resort Mate. We've created test accounts, which you can find
+            further down this page.
+          </p>
+          <div class="cc-button-invert hcenter login">{{i18n 'app.goToLoginPage'}}</div>
+        </div>
+      </div>
+      
+      <div class="card">
+        
+        <div class="hcenter">
+          <div class="welcome">User Experience &amp; User Testing</div>
+          <p class="description">
+            {{!--We used latest web-development standards and changes made in Resort Mate are immediately synchronized
+            to other clients accessing the same data.--}}
+            
+            We know that an easy-to-use and easy-to-learn user interface is mandatory for the success of Resort Mate and
+            user experience and a fun-to-use application can bring added value. This is why we are currently in beta-testing
+            with a real client and plan to go live once we are satisfied with the user experience.
+          </p> 
+        </div>
+      </div>
+      
+      <!--<div class="teaser">
+        <img src="/images/dashboard.png" alt="Dashboard" />
+      </div>
+      
+      <div class="teaser">
+        <img src="/images/invoice.png" alt="Invoice" />
+      </div>-->
+        
+      <div class="card">
+        <div class="test-accounts">
+          <div class="title">Test Accounts</div>
+          <p class="description">
+            We've created three user accounts to play with and test Resort Mate. Each user account is associated to
+            with different role. The manager role has access to customer data, can manage rooms and order items, add
+            or change bookings, and create offers and invoices. The curator role can access to customer data and add
+            or change bookings. The accountant role can access customer data and add or change offers and invoices.
+          </p>
+          <p class="description">Log in with either of the test accounts and try out Resort Mate.</p>
+          <div>
+            {{> TestAccount name="John Manager" role="manager" email="manager@resortmate.com" password="test1234"}}
+          </div>
+          <div>
+            {{> TestAccount name="Jane Curator" role="curator" email="curator@resortmate.com" password="test1234"}}          
+          </div>
+          <div>
+            {{> TestAccount name="Jim Accountant" role="accountant" email="accountant@resortmate.com" password="test1234"}}          
+          </div>
+          <div class="cc-button-invert hcenter login">{{i18n 'app.goToLoginPage'}}</div>
+        </div>
+      </div>
+      
+    </div>
+    <div class="credits">&copy; 2010-{{year serverDate}} &bullet; Concept &bullet; Roman Rädle</div>
+  </div>
+</template>
+
+<template name="TestAccount">
+  <div class="test-account">
+    <div class="name">{{name}} &bullet; {{role}} role</div>
+    <!--<div class="role">{{role}}</div>-->
+    <div class="email">Email: {{email}}</div>
+    <div class="password">Password: {{password}}</div>
+  </div>
+</template>

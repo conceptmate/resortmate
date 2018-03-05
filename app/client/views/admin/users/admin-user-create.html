@@ -1,0 +1,9 @@
+<template name="AdminUserAdd">
+  <div class="card editor admin-user-add">
+    <h2 class="card-title">{{i18n 'user.add'}}</h2>
+    
+    {{#autoForm schema=Schemas.UserAdd id="admin-user-add-form" type="method" meteormethod="addUser"}}
+      {{> afQuickFields}}
+    {{/autoForm}}
+  </div>
+</template>

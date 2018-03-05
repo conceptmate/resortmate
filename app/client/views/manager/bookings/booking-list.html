@@ -1,0 +1,13 @@
+<template name="BookingList">
+  <div class="card booking-list">
+    <h2 class="card-title">{{i18n 'bookings.list'}}</h2>
+    
+    <div class="data-table">
+      {{#if collection}}
+        {{> reactiveTable collection=collection settings=Tables.Bookings}}
+      {{else}}
+        {{> reactiveTable settings=Tables.Bookings}}
+      {{/if}}
+    </div>
+  </div>
+</template>

@@ -1,0 +1,18 @@
+<template name="ConceptPaperTextBox">
+  {{#TextBox options=options isEditable=false}}
+    {{{Concept_Paper_maintainLinebreaks data.text}}}
+  {{/TextBox}}
+</template>
+
+<template name="TextBox">
+  <div class="paper-text-box {{Concept_Paper_joinClasses options.classes}}" {{options.attributes}}>
+  {{#if data}}
+    {{> TextField}}
+  {{else}}
+    <div class="text-box-input" contenteditable="{{isEditable}}">{{#unless isEditable}}{{#if data}}{{getValue data key}}{{else}}{{> Template.contentBlock}}{{/if}}{{/unless}}</div>
+    {{#if isEditable}}
+      {{updateValue data key}}
+    {{/if}}
+  {{/if}}
+  </div>
+</template>

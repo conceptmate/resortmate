@@ -1,0 +1,9 @@
+<template name="BookingEdit">
+  <div class="card editor booking-edit">
+    <h2 class="card-title">{{i18n 'booking.edit'}}</h2>
+    
+    {{#autoForm collection="Bookings" id="booking-form" type=insertOrUpdate doc=booking meteormethod=insertOrUpdateMethod}}
+      {{> afQuickFields omitFields=defaultOmitFields}}
+    {{/autoForm}}
+  </div>
+</template>

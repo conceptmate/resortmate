@@ -1,0 +1,33 @@
+@import (reference) '/client/styles/base.import.less';
+
+form {
+  
+  .input-prefixed {
+    display: table !important;
+    float: right !important;
+    
+    &[prefix2]:before {
+      content: attr(prefix2);
+      width: 1% !important;
+      display: table-cell !important;
+    }
+    
+    &[suffix2]:after {
+      content: attr(suffix2);
+      width: 1% !important;
+      display: table-cell !important;
+    }
+    
+    input {
+      display: table-cell !important;
+      width: 100% !important;
+      padding-left: 0 !important;
+      // text-align: right;
+      
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+      font-style: inherit;
+    }
+  }
+}

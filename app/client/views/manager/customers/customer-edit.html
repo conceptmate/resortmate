@@ -1,0 +1,27 @@
+<template name="CustomerEdit">
+  <div class="card editor customer-edit">
+    <h2 class="card-title">{{i18n 'customer.edit'}}</h2>
+    
+    {{#autoForm collection="Customers" id="customer-form" type=insertOrUpdate doc=customer meteormethod=insertOrUpdateMethod}}
+      {{> afQuickFields omitFields=defaultOmitFields}}
+    {{/autoForm}}
+  </div>
+  
+  {{#if customer}}
+    {{#if isInRole 'curator,manager,admin' currentDomain}}
+      <div class="customer-bookings">
+        {{> BookingList collection=bookings}}
+      </div>
+    {{/if}}
+    
+    {{#if isInRole 'accountant,manager,admin' currentDomain}}
+    <div class="customer-offers">
+      {{> ItemsDocumentList subscriptionName=offers title=(i18n 'offers.list') i18nPrefix='offer' documentType='offer'}}
+    </div>
+    
+    <div class="customer-invoices">
+      {{> ItemsDocumentList subscriptionName=invoices title=(i18n 'invoices.list') i18nPrefix='invoice' documentType='invoice'}}
+    </div>
+    {{/if}}
+  {{/if}}
+</template>

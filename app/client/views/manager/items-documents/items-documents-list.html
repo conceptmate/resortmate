@@ -1,0 +1,9 @@
+<template name="ItemsDocumentList"> 
+  <div class="card items-document-list">
+    <h2 class="card-title">{{title}}</h2>
+    
+    <div class="data-table">
+      {{> reactiveTable collection=subscriptionName settings=Tables.ItemsDocuments i18nPrefix=i18nPrefix}}
+    </div>
+  </div>
+</template>
