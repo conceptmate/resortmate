@@ -1,4 +1,12 @@
-### Errors
+# Get started
+
+You need to have meteor installed in order to run this project. More details on meteor.com.
+
+Install all node modules with `npm install`.
+
+Then, execute `node run-app.js` and when everything run correctly you can start the meteor process with `meteor`.
+
+# Errors
 
 ## Not migrating, control is locked
 
