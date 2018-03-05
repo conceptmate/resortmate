@@ -2,9 +2,7 @@
 
 You need to have meteor installed in order to run this project. More details on meteor.com.
 
-Install all node modules with `npm install`.
-
-Then, execute `node run-app.js` and when everything run correctly you can start the meteor process with `meteor`.
+Execute `node run-app.js`, and when everything run correctly navigate to the `app` directory and run meteor with `meteor`.
 
 # Errors
 
